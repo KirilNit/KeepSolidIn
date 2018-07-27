@@ -6,7 +6,7 @@ from selenium.common.exceptions import TimeoutException
 
 driver = webdriver.Chrome()
 driver.get('https://www.vpnunlimitedapp.com/en/pricing')
-
+#
 wait = WebDriverWait(driver, 10)
 # driver.refresh()
 el1 = driver.find_element_by_xpath("//a[@class='prices_cnt--item']")

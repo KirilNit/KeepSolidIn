@@ -6,7 +6,7 @@ import time
 
 driver = webdriver.Chrome()
 driver.get('https://www.vpnunlimitedapp.com/en')
-
+#
 plBut = driver.find_element_by_xpath("//div[@class='pulse2']/ancestor::a")
 plBut.click()
 
