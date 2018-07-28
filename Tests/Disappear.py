@@ -12,3 +12,11 @@ def test_disappear(driver):
 
     #тут работает только в таком вариант, лично у меня, при добавлении driver.refresh() тест крашится
     el4.click() and WebDriverWait(driver, 10).until(ec.staleness_of(driver.find_element_by_xpath("//div[@class='pricing_title_in_header']/child::h2")))
+
+    """
+    
+    el4.click()
+    driver.refresh()
+    WebDriverWait(driver, 10).until(
+        ec.staleness_of(driver.find_element_by_xpath("//div[@class='pricing_title_in_header']/child::h2")))
+    """
