@@ -3,4 +3,4 @@ def test_protect(driver):
     button = driver.find_element_by_xpath("//a[text()='Protect Me']")
     button.click()
     page = driver.current_url
-    assert page != 'https://www.vpnunlimitedapp.com/en/downloads/windows', print('Ni!')
+    assert page != 'https://www.vpnunlimitedapp.com/en/downloads/windows'
