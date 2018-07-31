@@ -14,17 +14,3 @@ def test_disappear(driver):
     driver.refresh()
     wait.until(ec.staleness_of(el2))
 
-    """
-    wait.cuntil(ec.presence_of_element_located((By.XPATH, "//div[@class='pricing_title_in_header']/child::h2")))
-    el4 = driver.find_element_by_xpath("//div[@class='log_sec_price xl-12']/descendant::a")
-
-    #тут работает только в таком вариант, лично у меня, при добавлении driver.refresh() тест крашится
-    el4.click() and WebDriverWait(driver, 10).until(ec.staleness_of(driver.find_element_by_xpath("//div[@class='pricing_title_in_header']/child::h2")))
-
-    
-    
-    el4.click()
-    driver.refresh()
-    WebDriverWait(driver, 10).until(
-        ec.staleness_of(driver.find_element_by_xpath("//div[@class='pricing_title_in_header']/child::h2")))
-    """

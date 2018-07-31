@@ -9,7 +9,7 @@ def test_footerInp(driver):
     inpForm.send_keys('234234dfsdf')
     label = driver.find_element_by_xpath("//label[@class='footer_input_btn_label']")
     label.click()
-    wait = WebDriverWait(driver, 11)
+    wait = WebDriverWait(driver, 10)
     wait.until(ec.presence_of_element_located((By.XPATH, "//div[@class='modal-popup--content']")))
     errorattr = driver.find_element_by_xpath("//p[@class='form-error']").text
     assert errorattr != 'The "E-mail" field is required.'
