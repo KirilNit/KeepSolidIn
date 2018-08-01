@@ -3,7 +3,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
 from selenium import webdriver
-def test_footerInp(driver):
+def test_footerinpu(driver):
     driver.get('https://www.vpnunlimitedapp.com/en')
     inpForm = driver.find_element_by_xpath("//input[@class='footer_input_form']")
     inpForm.send_keys('234234dfsdf')
@@ -12,4 +12,4 @@ def test_footerInp(driver):
     wait = WebDriverWait(driver, 10)
     wait.until(ec.presence_of_element_located((By.XPATH, "//div[@class='modal-popup--content']")))
     errorattr = driver.find_element_by_xpath("//p[@class='form-error']").text
-    assert errorattr != 'The "E-mail" field is required.'
+    assert errorattr == 'The "E-mail" field must contain a valid email address.'

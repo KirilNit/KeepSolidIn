@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
 import time
 
-def test_signIn(driver):
+def test_signine(driver):
     driver.get('https://www.vpnunlimitedapp.com/en')
     wait = WebDriverWait(driver, 10)
     navBarr = driver.find_element_by_xpath("//label[@class='navbar-toggle']")
