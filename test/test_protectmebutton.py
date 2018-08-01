@@ -1,4 +1,4 @@
-def test_protecte(driver):
+def test_protectee(driver):
     driver.get('https://www.vpnunlimitedapp.com/en')
     button = driver.find_element_by_xpath("//a[text()='Protect Me']")
     button.click()

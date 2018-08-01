@@ -6,7 +6,7 @@ import time
 
 def test_signine(driver):
     driver.get('https://www.vpnunlimitedapp.com/en')
-    wait = WebDriverWait(driver, 10)
+    wait = WebDriverWait(driver, 9)
     navBarr = driver.find_element_by_xpath("//label[@class='navbar-toggle']")
     navBarr.click()
     signInBut = wait.until(ec.element_to_be_clickable((By.XPATH,"//a[text()='Sign In']")))
