@@ -1,4 +1,7 @@
-from selenium.webdriver.common.keys import Keys
+from pages import page
+link = 'https://www.vpnunlimitedapp.com/en/info/specials/server-locations'
+path_for_input = "//input[@id='server_countries_input']"
+path_for_text = "//span[text()='Only latin characters and spaces are valid']"
 def test_cuntryinput(driver):
     """
     ===Description:
@@ -7,9 +10,6 @@ def test_cuntryinput(driver):
     ===Expected Result:
         -'Only latin characters and spaces are valid' warning appears under textfield
     """
-
-    driver.get('https://www.vpnunlimitedapp.com/en/info/specials/server-locations')
-    driver.find_element_by_xpath("//input[@id='server_countries_input']").send_keys('УкРаина')
-    warning = driver.find_element_by_xpath\
-        ("//span[text()='Only latin characters and spaces are valid']").text
-    assert warning == 'Only latin characters and spaces are valid'
+    country = page.KeepSolidIn(driver)
+    country.go_to(link)
+    country.for_cyrillic_country(path_for_input, path_for_text)

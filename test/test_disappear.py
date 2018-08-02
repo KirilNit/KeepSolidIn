@@ -1,9 +1,11 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
+from pages import page
 
 def test_disappeare(driver):
-    driver.get('https://www.vpnunlimitedapp.com/en/pricing')
+    disapear = page.KeepSolidIn(driver)
+    disapear.go_to('https://www.vpnunlimitedapp.com/en/pricing')
     wait = WebDriverWait(driver, 9)
     el1 = driver.find_element_by_xpath("//a[@class='prices_cnt--item']")
     el1.click()

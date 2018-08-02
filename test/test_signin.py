@@ -1,9 +1,14 @@
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
-from selenium.webdriver.common.by import By
 import time
+from pages import page
 
+navbar = "//label[@class='navbar-toggle']"
+signin_button = "//a[text()='Sign In']"
+email_path = "//div[@class='user_login']/child::h4[text()='Email (KeepSolid ID)']/following-sibling::input"
+email = 'ForTestKeep@gmail.com'
+pass_path = "//div[@class='log_sec_input ds-tab']/descendant::h4[text()='Password']/following-sibling::input[1]"
+password = '1q2w3e4r5t'
+login_but = "//button[@class='l_s_login_btn button-find' and text()='Login']"
+my_acc = "//a[text()='My account']"
 def test_signine(driver):
     """
     ===Description:
@@ -17,18 +22,14 @@ def test_signine(driver):
     ===Expected Result:
         -In navigation bar appears field 'My account'
     """
-    driver.get('https://www.vpnunlimitedapp.com/en')
-    wait = WebDriverWait(driver, 9)
-    navBarr = driver.find_element_by_xpath("//label[@class='navbar-toggle']")
-    navBarr.click()
-    signInBut = wait.until(ec.element_to_be_clickable((By.XPATH,"//a[text()='Sign In']")))
-    signInBut.click()
-    emailfield = wait.until(ec.element_to_be_clickable((By.XPATH, "//div[@class='user_login']/child::h4[text()='Email (KeepSolid ID)']/following-sibling::input")))
-    passfield = wait.until(ec.element_to_be_clickable((By.XPATH,"//div[@class='log_sec_input ds-tab']/descendant::h4[text()='Password']/following-sibling::input[1]")))
-    emailfield.send_keys('ForTestKeep@gmail.com')
-    passfield.send_keys('1q2w3e4r5t')
-    driver.find_element_by_xpath("//button[@class='l_s_login_btn button-find' and text()='Login']").click()
+
+    login = page.KeepSolidIn(driver)
+    login.go_to()
+    login.click_for_signin(navbar)
+    login.sign_in_press(signin_button)
+    login.enter_email(email_path, email)
+    login.enter_pass(pass_path, password)
+    login.click_for_signin(login_but)
     time.sleep(6)
-    navBarr.click()
-    wait.until(ec.element_to_be_clickable((By.XPATH, "//a[text()='My account']")))
-    driver.find_element_by_xpath("//a[text()='My account']").click()
+    login.click_for_signin(navbar)
+    login.sign_in_press(my_acc)
