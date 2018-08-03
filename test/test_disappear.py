@@ -1,6 +1,5 @@
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
-from selenium.webdriver.common.by import By
+import allure
+from allure.constants import AttachmentType
 from pages import page
 #================== Variables ===========
 link = 'https://www.vpnunlimitedapp.com/en/pricing'
@@ -12,5 +11,7 @@ def test_disappeare(driver):
     disapear = page.PricingPage(driver)
     disapear.go_to_pricing(link)
     disapear.press_subscription(subscriorin_type)
+    with allure.MASTER_HELPER.step('Screen_shot_subs'):
+        allure.MASTER_HELPER.attach('screen_shot', driver.get_screenshot_as_png(), type=AttachmentType.PNG)
     disapear.press_change_plan(change_plan_loc)
     disapear.wait_for_disappear(logo_path)

@@ -1,10 +1,10 @@
 import allure
 from allure.constants import AttachmentType
 from pages import  page
-
+#=======Variables=========
 button_me = "//a[text()='Protect Me']"
 check_link = 'https://www.vpnunlimitedapp.com/en/downloads/windows'
-
+#=========================
 def test_protectee(driver):
     """
     ===Description:

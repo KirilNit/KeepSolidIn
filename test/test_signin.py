@@ -1,4 +1,6 @@
 import time
+import allure
+from allure.constants import AttachmentType
 from pages import page
 #=========Variables==========
 navbar = "//label[@class='navbar-toggle']"
@@ -30,6 +32,8 @@ def test_signine(driver):
     login.sign_in_press(signin_button)
     login.enter_email(email_path, email)
     login.enter_pass(pass_path, password)
+    with allure.MASTER_HELPER.step('Screen_shot_input'):
+        allure.MASTER_HELPER.attach('screen_shot', driver.get_screenshot_as_png(), type=AttachmentType.PNG)
     login.click_for_signin(login_but)
     time.sleep(6)
     login.click_for_signin(navbar)
