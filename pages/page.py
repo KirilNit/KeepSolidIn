@@ -5,22 +5,14 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 
 
-class KeepSolidIn:
+class MainPage:
     def __init__(self, driver):
         self.driver = driver
 
 
-    def go_to(self, link = 'https://www.vpnunlimitedapp.com/en'):
+    def go_to_main(self, link = 'https://www.vpnunlimitedapp.com/en'):
         self.driver.get(link)
         return self
-
-    '''
-    def screen(self): 
-        '''
-
-    def for_cyrillic_country(self, path, pah2):
-        self.driver.find_element_by_xpath(path).send_keys('УкРаина')
-        assert self.driver.find_element_by_xpath(pah2).text == 'Only latin characters and spaces are valid'
 
 
     def input_for_footer(self, incorrect_data, path):
@@ -71,3 +63,40 @@ class KeepSolidIn:
         wait = WebDriverWait(self.driver, 10)
         wait.until(ec.element_to_be_clickable((By.XPATH,pass_path)))
         self.driver.find_element_by_xpath(pass_path).send_keys(password)
+
+
+class ServerLocation:
+
+    def __init__(self, driver):
+        self.driver = driver
+
+    def for_cyrillic_country(self, path, pah2):
+        self.driver.find_element_by_xpath(path).send_keys('УкРаина')
+        assert self.driver.find_element_by_xpath(pah2).text == 'Only latin characters and spaces are valid'
+
+    def go_to_server_loc(self, link = 'https://www.vpnunlimitedapp.com/en'):
+        self.driver.get(link)
+        return self
+
+class PricingPage:
+
+    def __init__(self, driver):
+        self.driver = driver
+
+    def go_to_pricing(self, link = 'https://www.vpnunlimitedapp.com/en/pricing'):
+        self.driver.get(link)
+        return self
+
+    def press_subscription(self, subscription_type):
+        self.driver.find_element_by_xpath(subscription_type).click()
+
+    def press_change_plan(self, change_plan):
+        wait = WebDriverWait(self.driver, 10)
+        wait.until(ec.element_to_be_clickable((By.XPATH, change_plan)))
+        self.driver.find_element_by_xpath(change_plan).click()
+
+    def wait_for_disappear(self, logo_path):
+        wait = WebDriverWait(self.driver, 10)
+        el2 = self.driver.find_element_by_xpath(logo_path)
+        self.driver.refresh()
+        wait.until(ec.staleness_of(el2))

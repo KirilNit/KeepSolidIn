@@ -21,7 +21,7 @@ def test_ip(driver):
         -'https://www.vpnunlimitedapp.com/en/extras/personal-static-ip' opening
     """
 
-    ip = page.KeepSolidIn(driver)
-    ip.go_to()
+    ip = page.MainPage(driver)
+    ip.go_to_main()
     ip.for_ip_extras(path)
     ip.staticip_click(ip_xpath, check_url)

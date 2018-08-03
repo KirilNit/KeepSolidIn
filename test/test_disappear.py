@@ -2,17 +2,15 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
 from pages import page
-
+#================== Variables ===========
+link = 'https://www.vpnunlimitedapp.com/en/pricing'
+subscriorin_type = "//a[@class='prices_cnt--item']"
+change_plan_loc =  "//div[@class='log_sec_price xl-12']/descendant::a"
+logo_path = "//div[@class='pricing_title_in_header']/child::h2"
+#========================================
 def test_disappeare(driver):
-    disapear = page.KeepSolidIn(driver)
-    disapear.go_to('https://www.vpnunlimitedapp.com/en/pricing')
-    wait = WebDriverWait(driver, 9)
-    el1 = driver.find_element_by_xpath("//a[@class='prices_cnt--item']")
-    el1.click()
-    changePlanLoc =  "//div[@class='log_sec_price xl-12']/descendant::a"
-    wait.until(ec.element_to_be_clickable((By.XPATH, changePlanLoc)))
-    driver.find_element_by_xpath(changePlanLoc).click()
-    el2 = driver.find_element_by_xpath("//div[@class='pricing_title_in_header']/child::h2")
-    driver.refresh()
-    wait.until(ec.staleness_of(el2))
-
+    disapear = page.PricingPage(driver)
+    disapear.go_to_pricing(link)
+    disapear.press_subscription(subscriorin_type)
+    disapear.press_change_plan(change_plan_loc)
+    disapear.wait_for_disappear(logo_path)

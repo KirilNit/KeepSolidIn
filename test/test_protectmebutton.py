@@ -14,8 +14,8 @@ def test_protectee(driver):
         -Opening 'https://www.vpnunlimitedapp.com/en/downloads/windows'
     """
 
-    button = page.KeepSolidIn(driver)
-    button.go_to()
-    with allure.MASTER_HELPER.step('Error'):
+    button = page.MainPage(driver)
+    button.go_to_main()
+    with allure.MASTER_HELPER.step('Screen_shot'):
         allure.MASTER_HELPER.attach('screen_shot', driver.get_screenshot_as_png(), type=AttachmentType.PNG)
     button.protect_me(button_me, check_link)

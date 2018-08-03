@@ -16,7 +16,7 @@ def test_footerinpu(driver):
         -'The "E-mail" field must contain a valid email address.' warning opens
     """
 
-    footer = page.KeepSolidIn(driver)
-    footer.go_to()
+    footer = page.MainPage(driver)
+    footer.go_to_main()
     footer.input_for_footer(incorrect_data, footer_inp )
     footer.click_for_footer(path, path1, check_text)

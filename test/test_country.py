@@ -10,6 +10,6 @@ def test_cuntryinput(driver):
     ===Expected Result:
         -'Only latin characters and spaces are valid' warning appears under textfield
     """
-    country = page.KeepSolidIn(driver)
-    country.go_to(link)
+    country = page.ServerLocation(driver)
+    country.go_to_server_loc(link)
     country.for_cyrillic_country(path_for_input, path_for_text)

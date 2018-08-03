@@ -1,6 +1,6 @@
 import time
 from pages import page
-
+#=========Variables==========
 navbar = "//label[@class='navbar-toggle']"
 signin_button = "//a[text()='Sign In']"
 email_path = "//div[@class='user_login']/child::h4[text()='Email (KeepSolid ID)']/following-sibling::input"
@@ -9,6 +9,7 @@ pass_path = "//div[@class='log_sec_input ds-tab']/descendant::h4[text()='Passwor
 password = '1q2w3e4r5t'
 login_but = "//button[@class='l_s_login_btn button-find' and text()='Login']"
 my_acc = "//a[text()='My account']"
+#============================
 def test_signine(driver):
     """
     ===Description:
@@ -23,8 +24,8 @@ def test_signine(driver):
         -In navigation bar appears field 'My account'
     """
 
-    login = page.KeepSolidIn(driver)
-    login.go_to()
+    login = page.MainPage(driver)
+    login.go_to_main()
     login.click_for_signin(navbar)
     login.sign_in_press(signin_button)
     login.enter_email(email_path, email)
